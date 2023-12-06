@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Chat</string>
+    <string name="passwd">1412</string>
+    <string name="update_notice">本次更新添加了更新内容说明</string>
+</resources>
