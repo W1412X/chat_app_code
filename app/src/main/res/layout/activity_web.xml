@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:onClick="onTouchEvent"
+    android:id="@+id/web_layout"
     tools:context=".WebActivity">
 
     <WebView
@@ -32,7 +34,7 @@
         android:stateListAnimator="@null"
         android:background="@drawable/transparent_button"/>
     <androidx.cardview.widget.CardView
-        app:cardBackgroundColor="#3343CDaa"
+        app:cardBackgroundColor="#ffffffff"
         app:cardCornerRadius="15dp"
         android:id="@+id/other_tool_list"
         android:layout_width="wrap_content"
@@ -44,7 +46,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
+            android:background="#ffffffff"
             android:orientation="vertical">
             <android.widget.Button
                 android:id="@+id/prevent_ad_button"
@@ -52,19 +54,32 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:layout_width="80dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/water_button_green"
                 android:text="无弹窗"
                 android:textSize="20sp"
                 android:textColor="#ffffff" />
+
             <android.widget.Button
-                android:id="@+id/update_version_button"
-                android:layout_marginBottom="10dp"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/water_button_green"
+                android:layout_marginBottom="5dp"
                 android:layout_marginTop="0dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:layout_width="80dp"
+                android:text="远离手机"
+                android:textSize="20sp"
+                android:textColor="#ffffff"
+                android:id="@+id/fuck_phone_button"/>
+            <android.widget.Button
+                android:id="@+id/update_version_button"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/water_button_green"
                 android:text="更新"

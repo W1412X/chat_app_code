@@ -19,6 +19,12 @@
         android:theme="@style/Theme.Chat"
         tools:targetApi="31">
         <activity
+            android:name=".BusActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FuckPhoneActivity"
+            android:exported="false" />
+        <activity
             android:name=".WithOutAdActivity"
             android:exported="false" />
         <activity

@@ -2,6 +2,7 @@ package com.example.chat;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.view.GestureDetectorCompat;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -20,6 +21,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -31,6 +33,7 @@ import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -59,9 +62,13 @@ public class WebActivity extends AppCompatActivity {
     public String latest_version_url="https://raw.githubusercontent.com/W1412X/chat_app_update/main/version.json";
     public String download_url="https://raw.githubusercontent.com/W1412X/chat_app_update/main/app-debug.apk";
     private CardView tool_list;
+    private Bundle extras;
+    private Button fuck_phone_button;
+    private RelativeLayout total_layout;
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        extras=getIntent().getExtras();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web);
         web=findViewById(R.id.web_view_page);
@@ -102,6 +109,49 @@ public class WebActivity extends AppCompatActivity {
                 CheckUpdate checkUpdate=new CheckUpdate();
                 CheckUpdate.CheckVersionTask checkVersionTask=checkUpdate.new CheckVersionTask();
                 checkVersionTask.execute(latest_version_url);
+            }
+        });
+        if(extras!=null){
+            boolean if_updated=extras.getBoolean("if_updated");
+            if(if_updated){
+                AlertDialog.Builder builder =new AlertDialog.Builder(WebActivity.this);
+                builder.setTitle("更新说明");
+                builder.setMessage(R.string.update_notice);
+                builder.setPositiveButton("确认", null);
+                builder.show();
+            }
+        }
+        //远离手机按钮
+        fuck_phone_button=findViewById(R.id.fuck_phone_button);
+        fuck_phone_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(WebActivity.this,FuckPhoneActivity.class);
+                startActivity(intent);
+            }
+        });
+        //设置滑动手势监听器
+        web.setOnTouchListener(new View.OnTouchListener() {
+            private float startX;
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        startX = event.getX();
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        float endX = event.getX();
+                        float screenWidth = getResources().getDisplayMetrics().widthPixels;
+                        if (startX-endX> screenWidth / 3) {
+                            // 向右滑动超过屏幕宽度的1/3，执行跳转页面的逻辑
+                            // 在这里添加跳转页面的代码
+                            // 比如：
+                            Intent intent = new Intent(WebActivity.this, BusActivity.class);
+                            startActivity(intent);
+                        }
+                        break;
+                }
+                return true;
             }
         });
     }
@@ -157,7 +207,7 @@ public class WebActivity extends AppCompatActivity {
         }
         @Override
         public void onPageFinished(WebView view, String url) {
-            if(loading_view!=null&&loading_view.getVisibility()==View.VISIBLE){
+           if(loading_view!=null&&loading_view.getVisibility()==View.VISIBLE){
                 loading_view.setVisibility(View.GONE);
             }
             super.onPageFinished(view, url);

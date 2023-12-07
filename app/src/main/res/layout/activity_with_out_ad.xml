@@ -12,6 +12,17 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:visibility="gone"/>
+    <android.widget.Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ad_text_notice"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/transparent_button"
+        android:text="TIPS"
+        android:textSize="20sp"
+        android:textColor="#ffffff"
+        android:id="@+id/web_ad_tip_button"/>
     <WebView
         android:id="@+id/ad_prevent_webview"
         android:layout_width="match_parent"

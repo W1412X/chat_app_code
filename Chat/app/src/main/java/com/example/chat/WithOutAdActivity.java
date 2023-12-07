@@ -1,11 +1,14 @@
 package com.example.chat;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.net.http.SslError;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.InputType;
 import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.SslErrorHandler;
@@ -26,6 +29,7 @@ public class WithOutAdActivity extends AppCompatActivity {
     private Button enter_button;
     private String target_url;
     private String domain;
+    private Button tips_button;
     private String get_domain(){
         String regex="^(https?://)?([a-zA-Z0-9.-]+)\\b";
         Pattern pattern = Pattern.compile(regex);
@@ -56,6 +60,43 @@ public class WithOutAdActivity extends AppCompatActivity {
                 enter_button.setVisibility(View.GONE);
                 web.loadUrl(s);
                 domain=get_domain();
+            }
+        });
+        //tips_button
+        tips_button=findViewById(R.id.web_ad_tip_button);
+        tips_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder=new AlertDialog.Builder(WithOutAdActivity.this);
+                builder.setTitle("密码验证");
+                EditText input=new EditText(WithOutAdActivity.this);
+                input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                builder.setView(input);
+                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String correct_passwd=getString((R.string.ad_page_tip_passwd));
+                        String password = input.getText().toString();
+                        if(password.equals(correct_passwd)){
+                            AlertDialog.Builder builder1=new AlertDialog.Builder(WithOutAdActivity.this);
+                            builder1.setTitle("TIPS");
+                            builder1.setMessage(R.string.ad_page_tips);
+                            builder1.show();
+                            builder1.setPositiveButton("OK",null);
+                        }
+                        else{
+                            Toast.makeText(WithOutAdActivity.this,"密码错误",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+                builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel(); // 取消对话框
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
     }

@@ -1,11 +1,13 @@
 package com.example.chat;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GestureDetectorCompat;
 
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.GestureDetector;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         boolean isFirstRun = sharedPreferences.getBoolean("isFirstRun", true);
         String saved_version=sharedPreferences.getString("version","0.0.0");
+        String main_window=sharedPreferences.getString("main_window","chat");
+
         String now_version=BuildConfig.VERSION_NAME.toString();
         if(!saved_version.equals(now_version)){
             SharedPreferences.Editor editor= sharedPreferences.edit();
@@ -30,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
             editor.apply();
             if_updated=true;
         }
-        if (isFirstRun) {
+        if (isFirstRun){
             setContentView(R.layout.activity_main);
             login_button=findViewById(R.id.login_button);
             code_input=findViewById(R.id.invite_code_input);
