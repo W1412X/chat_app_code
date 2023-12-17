@@ -16,10 +16,13 @@
         android:padding="10dp"
         android:gravity="left"
         android:password="true"/>
-    <Button
+    <android.widget.Button
         android:id="@+id/login_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="认证"
+        android:background="@drawable/image_button_green"
+        android:textSize="25sp"
+        android:textColor="#ffffff"
         android:layout_below="@id/invite_code_input"/>
 </RelativeLayout>

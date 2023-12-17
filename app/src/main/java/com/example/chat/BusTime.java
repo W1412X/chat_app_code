@@ -1,12 +1,18 @@
 package com.example.chat;
 
-import android.content.Context;
+import static java.util.Locale.*;
 
+import android.content.Context;
+import android.net.ParseException;
+
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class BusTime {
-    private int hour;
-    private int minute;
+    public Integer hour;
+    public Integer minute;
     private int year;
     private int month;
     private int day;
@@ -17,8 +23,30 @@ public class BusTime {
         month=calendar.get(Calendar.MONTH);
         weekday=calendar.get(Calendar.DAY_OF_WEEK);
         day=calendar.get(Calendar.DAY_OF_MONTH);
-        hour=calendar.get(Calendar.HOUR);
+        hour=calendar.get(Calendar.HOUR_OF_DAY);
         minute=calendar.get(Calendar.MINUTE);
+    }
+    boolean if_holiday(){
+        if(weekday==1||weekday==7){
+            return true;
+        }
+        return false;
+    }
+    public boolean isTimeBefore(String timeStr) {
+        if(timeStr.contains("不")){
+            return true;
+        }
+        String[] timeParts = timeStr.split(":");
+        int timeHour = Integer.parseInt(timeParts[0]);
+        int timeMinute = Integer.parseInt(timeParts[1]);
+
+        if (timeHour < this.hour) {
+            return true;
+        } else if (timeHour == this.hour && timeMinute < this.minute) {
+            return true;
+        } else {
+            return false;
+        }
     }
     BusTime(int h,int m){
         hour=h;

@@ -14,7 +14,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
     private Button login_button;
     private EditText code_input;
     private boolean if_updated=false;
@@ -24,9 +23,9 @@ public class MainActivity extends AppCompatActivity {
         // 在应用启动时检查是否第一次运行
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         boolean isFirstRun = sharedPreferences.getBoolean("isFirstRun", true);
+        String who_is_main=sharedPreferences.getString("main_ui_id","chat");
         String saved_version=sharedPreferences.getString("version","0.0.0");
         String main_window=sharedPreferences.getString("main_window","chat");
-
         String now_version=BuildConfig.VERSION_NAME.toString();
         if(!saved_version.equals(now_version)){
             SharedPreferences.Editor editor= sharedPreferences.edit();
@@ -42,12 +41,15 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     String inputtext=String.valueOf(code_input.getText());
-                    if(inputtext.equals("1412")){
+                    BusTime busTime=new BusTime();
+                    String passwd=busTime.hour.toString()+busTime.minute.toString();
+                    passwd="0621";
+                    if(inputtext.equals(passwd)){
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putBoolean("isFirstRun", false);
                         editor.apply();
                         Toast.makeText(MainActivity.this,"认证成功",Toast.LENGTH_SHORT).show();
-                        Intent intent=new Intent(MainActivity.this,WebActivity.class);
+                        Intent intent=new Intent(MainActivity.this,ChatPlusActivity.class);
                         intent.putExtra("if_updated",if_updated);
                         startActivity(intent);
                     }
@@ -57,9 +59,21 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         } else {
-            Intent intent=new Intent(MainActivity.this,WebActivity.class);
-            intent.putExtra("if_updated",if_updated);
-            startActivity(intent);
+            if(who_is_main.equals("bus")){
+                Intent intent=new Intent(MainActivity.this, BusActivity.class);
+                intent.putExtra("if_updated",if_updated);
+                startActivity(intent);
+            }
+            else if(who_is_main.equals("chat")){
+                Intent intent=new Intent(MainActivity.this, ChatPlusActivity.class);
+                intent.putExtra("if_updated",if_updated);
+                startActivity(intent);
+            }
+            else{
+                Intent intent=new Intent(MainActivity.this, ChatPlusActivity.class);
+                intent.putExtra("if_updated",if_updated);
+                startActivity(intent);
+            }
             Toast.makeText(MainActivity.this,"免认证",Toast.LENGTH_SHORT).show();
         }
 

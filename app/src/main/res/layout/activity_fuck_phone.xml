@@ -5,4 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".FuckPhoneActivity">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="资源：高德地图，bing，https://github.com/binjie09/chatgpt-web \n 更多开源项目(kivy实现的音乐搜索播放下载，pyQT实现的视频搜索播放下载，以及微信跑步小程序访问github W1412X主页获取)                 聊天发送长文本会有bug，不想改了。稍微长一点没啥事  \n 最后一次更新了，后续不再维护 源码之后会上传到仓库"/>
 </RelativeLayout>

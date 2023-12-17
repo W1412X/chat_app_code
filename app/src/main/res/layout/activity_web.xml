@@ -7,7 +7,11 @@
     android:onClick="onTouchEvent"
     android:id="@+id/web_layout"
     tools:context=".WebActivity">
-
+    <TextView
+        android:id="@+id/hel_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
     <WebView
         android:id="@+id/web_view_page"
         android:layout_width="match_parent"

@@ -89,7 +89,9 @@ public class BusMap {
             for(int u=0;u<bus_stops.get(queue1.get(i)).can_go.size();u++){
                 way.add(bus_stops.get(i).can_go.get(u));
                 if(bus_stops.get(i).can_go.get(u).target_id==target_id){
-                    ways.add(way);
+                    ArrayList<LinkStop>way_copy=new ArrayList<>();
+                    way_copy=way;
+                    ways.add(way_copy);
                     continue;
                 }
                 if(!if_visit[bus_stops.get(i).can_go.get(u).target_id]){

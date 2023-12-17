@@ -62,7 +62,7 @@
         android:layout_below="@id/lll"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="  this tool aims to protect you from the evil --- jump of the website"
+        android:text=" "
         android:textSize="20sp"
         android:background="#2243CDaa"
         android:layout_margin="10dp"

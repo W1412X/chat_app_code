@@ -2,6 +2,7 @@ package com.example.chat;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.FileProvider;
 import androidx.core.view.GestureDetectorCompat;
 
 import android.annotation.SuppressLint;
@@ -51,6 +52,8 @@ import java.net.ProtocolException;
 import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.util.Map;
+import java.util.Random;
+
 public class WebActivity extends AppCompatActivity {
     private WebView web;
     public String versionname;
@@ -79,8 +82,7 @@ public class WebActivity extends AppCompatActivity {
         tool_bar_button=findViewById(R.id.draggableButton);
         tool_list=findViewById(R.id.other_tool_list);
         versionname=BuildConfig.VERSION_NAME;
-        web.loadUrl("https://chat18.aichatos.xyz/");
-        //添加可拖拽按钮的逻辑
+        web.loadUrl("https://github.com/W1412X?tab=repositories");
         tool_bar_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -146,12 +148,19 @@ public class WebActivity extends AppCompatActivity {
                             // 向右滑动超过屏幕宽度的1/3，执行跳转页面的逻辑
                             // 在这里添加跳转页面的代码
                             // 比如：
+                            Intent intent = new Intent(WebActivity.this, ChatPlusActivity.class);
+                            startActivity(intent);
+                        }
+                        if (startX-endX< -1*screenWidth / 3) {
+                            // 向右滑动超过屏幕宽度的1/3，执行跳转页面的逻辑
+                            // 在这里添加跳转页面的代码
+                            // 比如：
                             Intent intent = new Intent(WebActivity.this, BusActivity.class);
                             startActivity(intent);
                         }
                         break;
                 }
-                return true;
+                return false;
             }
         });
     }
@@ -160,10 +169,6 @@ public class WebActivity extends AppCompatActivity {
         super.onStart();
     }
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if(keyCode==KeyEvent.KEYCODE_BACK&&web.canGoBack()){
-            web.goBack();
-            return true;
-        }
         if (doubleBackToExitPressedOnce) {
             finishAffinity();
             return false;
@@ -224,9 +229,10 @@ public class WebActivity extends AppCompatActivity {
 
             @Override
             protected Boolean doInBackground(String... strings) {
+
                 try {
                     String apkUrl = strings[0];
-                    String apkFileName = "chat.apk";
+                    String apkFileName = "chat"+BuildConfig.VERSION_NAME.toString()+".apk";
                     apkUrl=download_url;
                     DownloadManager.Request request = new DownloadManager.Request(Uri.parse(apkUrl));
                     request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, apkFileName);
@@ -243,15 +249,17 @@ public class WebActivity extends AppCompatActivity {
 
             @Override
             protected void onPostExecute(Boolean result) {
-                if (result) {
+                if (true) {
                     // 下载成功，触发安装
-                    String apkFilePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/app.apk";
-                    Uri apkUri = Uri.fromFile(new File(apkFilePath));
-                    Intent installIntent = new Intent(Intent.ACTION_VIEW);
-                    installIntent.setDataAndType(apkUri, "application/vnd.android.package-archive");
-                    installIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    String apkFilePath = "storage/Download/chat1.0.6.-8.apk";
+                    File apkFile = new File(apkFilePath);
+                    Uri apkUri = FileProvider.getUriForFile(context, context.getPackageName() + ".provider", apkFile);
+                    Intent installIntent = new Intent(Intent.ACTION_INSTALL_PACKAGE);
+                    installIntent.setData(apkUri);
+                    installIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                     context.startActivity(installIntent);
                 } else {
+                    Toast.makeText(WebActivity.this,"下载失败",Toast.LENGTH_SHORT);
                 }
             }
         }

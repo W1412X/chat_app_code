@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Chat</string>
     <string name="passwd">1412</string>
-    <string name="update_notice">1.0.4 本次更新添加了SDU BUS模块，可以通过进入主屏幕后左划进入 ,面向山东大学青岛校区微公交开发，包含线路信息，线路规划以及站点时间，推荐站点等功能，具体的地图组件仍在申请ing</string>
+    <string name="update_notice">修复聊天总等待时间超过一定时间后会出现重复上一个答案的bug  新增查看聊天历史以及新增聊天功能 长按历史记录列表可选择删除 ...       聊天发送长文本会有bug，不想改了。稍微长一点没啥事 \n 最后一次更新了，后续不再维护 ●)o(●</string>
     <string name="ad_page_tip_passwd">bqg1412</string>
-    <string name="ad_page_tips">对于一些"小电影"网站，这个工具可以有效的防止误点击或者广告导致的页面跳转\n这里有一个示例: https://ht306.xyz:9527/ </string>
+    <string name="ad_page_tips">啊，过期了>_></string>
+    <string name="chat_tip_emojis"></string>
 </resources>

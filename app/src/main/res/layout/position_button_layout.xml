@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<View class="com.example.chat.BusActivity$PositionButton" xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:background="@drawable/position_button"
+    android:textSize="25sp"
+    android:text="@{PositionButton.position_name}"
+    android:textColor="#ffffff">
+</View>
