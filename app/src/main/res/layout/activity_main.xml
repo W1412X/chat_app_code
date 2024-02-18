@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <android.widget.Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textIsSelectable="true"
+        android:background="@drawable/position_button"
+        android:textSize="25sp"
+        android:id="@+id/get_code_button_main"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:text="未注册的用户将自动注册"/>
+
+    <EditText
+        android:id="@+id/nick_name_input"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/passwd_input"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/edittext"
+        android:gravity="left"
+        android:hint="用户名"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/passwd_input"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/edittext"
+        android:gravity="left"
+        android:hint="密码"
+        android:padding="10dp"
+        android:password="true"
+        android:singleLine="true"
+        android:textSize="20sp" />
+    <LinearLayout
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/passwd_input"
+        android:layout_centerInParent="true"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+        <android.widget.Button
+            android:id="@+id/register_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:layout_below="@id/passwd_input"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/water_button_green"
+            android:text="注册"
+            android:textColor="#ffffff"
+            android:textSize="25sp" />
+        <android.widget.Button
+            android:id="@+id/login_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:layout_below="@id/passwd_input"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/water_button_green"
+            android:text="登陆"
+            android:textColor="#ffffff"
+            android:textSize="25sp" />
+    </LinearLayout>
+    <ProgressBar
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:id="@+id/main_page_loading_view"/>
+
+</RelativeLayout>

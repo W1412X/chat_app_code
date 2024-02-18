@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FuckPhoneActivity">
+    <WebView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/about_webview"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" http://39.101.160.55/ "
+        android:textColor="#ffffff"
+        android:textSize="25sp"
+        android:background="@drawable/position_button"
+        android:layout_alignParentTop="true"
+        android:textIsSelectable="true"
+        android:textStyle="bold"/>
+</RelativeLayout>

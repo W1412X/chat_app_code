@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/video_get_page"
+    tools:context=".VideoSearchActivity">
+    <WebView
+        android:id="@+id/video_get_web"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ProgressBar
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:id="@+id/video_get_page_progressbar"
+        android:layout_centerInParent="true"
+        />
+    <android.widget.Button
+        android:id="@+id/video_search_page_find_source_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="创建房间"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:layout_alignParentRight="true"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="7dp"
+        android:paddingBottom="7dp"
+        android:layout_marginLeft="20dp"
+        android:layout_above="@id/video_search_page_enter_room_by_passwd_button"
+        android:background="@drawable/video_search_find_source_button"/>
+    <android.widget.Button
+        android:id="@+id/video_search_page_enter_room_by_passwd_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="进入房间"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="10dp"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:layout_alignParentRight="true"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="7dp"
+        android:paddingBottom="7dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/video_search_find_source_button"/>
+</RelativeLayout>

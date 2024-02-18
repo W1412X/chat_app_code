@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Chat</string>
+    <string name="passwd">1412</string>
+    <string name="update_notice">1.8.0 \n将会存储聊天数据到云端，可以通过向作者邮箱发送邮件获取用户的所有聊天，发送主题为history_用户名</string>
+    <string name="ad_page_tip_passwd">bqg1412</string>
+    <string name="ad_page_tips">啊，过期了>_></string>
+    <string name="chat_tip_emojis"></string>
+    <string name="image_to_carton_page_declaration">由于服务器资源限制，上传的图片会被压缩，最后得到的图片较低，对大头照和单独一个建筑物的照片有较好的转化。\n\n仅支持JPG(JPEG)格式的图片(一般手机上图片都这种格式)。上传动图(gif)以及其他类型会导致未知的error\n\n关于隐私  上传的图片不会进行保存，直接将二进制数据传入模型处理\n\n关于使用  有三种模式分别为人像模式1，人像模式2，风景模式，分别用于处理人像照片，风景照片\n\n训练数据来源于 kaggle\n\n更多信息在chat界面的 关于 中寻找</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
